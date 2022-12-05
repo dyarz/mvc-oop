@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Halaman <?= $data['judul']; ?></title>
+  <title><?= $data['judul']; ?></title>
   <link href="<?= BASEURL; ?>/css/bootstrap.css" rel="stylesheet">
 </head>
 
@@ -23,6 +23,7 @@
         <div class="navbar-nav">
           <a class="nav-link active" aria-current="page" href="<?= BASEURL; ?>/about">About</a>
           <a class="nav-link" href="<?= BASEURL; ?>/about/page">Page</a>
+          <a class="nav-link" href="<?= BASEURL; ?>/mahasiswa">Mahasiswa</a>
         </div>
       </div>
     </div>
