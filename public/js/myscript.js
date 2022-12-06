@@ -1,4 +1,8 @@
+const flashData = $(".pesan").data('data-pesan');
+console.log(flashData);
 
+// }
+//tombol hapus
 $('.tombol-hps').on('click', function (e) {
   e.preventDefault();
   const href = $(this).attr('href');
@@ -20,3 +24,12 @@ $('.tombol-hps').on('click', function (e) {
     }
   });
 });
+
+// // document.querySelector(".tombol-hps").addEventListener('click', function (e) {
+// //   e.preventDefault();
+// //   console.info(document.querySelector('.tombol-hps'));
+// //});
+// // $('.tombol-hps').on('click'), function (e) {
+// //   e.preventDefault();
+
+// // }

@@ -1,14 +1,29 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-lg-6">
-      <?php if(isset($_)) Flasher::flash(); ?>
+      <?php Flasher::flash(); ?>
+    </div>
+    <div class="row mb-4">
+      <div class="col-lg-6">
+        <button type="button" class="btn btn-primary tombolTambahData" data-bs-toggle="modal" data-bs-target="#formModal">Tambah Data Mahasiswa</button>
+
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-lg-6">
+        <form action="<?= BASEURL; ?>/mahasiswa/cari" method="POST">
+          <div class="input-group ">
+            <input type="text" class="form-control" placeholder="Cari Mahasiswa" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword" id="keyword" autocomplete="off">
+            <button class="btn btn-primary" type="submit" id="cari" id="tombolCari">Cari</button>
+          </div>
+        </form>
+
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-6">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">Tambah Data Mahasiswa</button>
-      <br>
-      <br>
+
       <h3>Daftar Mahasiswa</h3>
       <?php foreach ($data['mhs'] as $mhs) : ?>
         <div class="list-group list-group-horizontal">
@@ -19,8 +34,12 @@
             <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge rounded-pill btn btn-info stretched-link">Detail</a>
 
           </li>
+          <li class="list-group-item list-group-item-success">
+            <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['id']; ?>" class="badge rounded-pill btn btn-success stretched-link tampilModalUbah" data-bs-toggle="modal" data-bs-target="#formModal" data-id=<?= $mhs['id']; ?>>Ubah</a>
+
+          </li>
           <li class="list-group-item list-group-item-danger">
-            <a class="tombol-hps badge rounded-pill  btn btn-danger stretched-link" href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['id']; ?>">Hapus</a>
+            <a class="tombol-hps badge rounded-pill  btn btn-danger stretched-link" href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['id']; ?>" onclick="return confirm('Yakin ?')">Hapus</a>
           </li>
         </div>
       <?php endforeach; ?>
@@ -37,6 +56,7 @@
       </div>
       <div class="modal-body">
         <form action="<?= BASEURL; ?>/mahasiswa/tambah" method="POST">
+          <input type="hidden" name="id" id="id">
           <div class="mb-3">
             <label for="nama" class="col-form-label">Nama</label>
             <input type="text" class="form-control" id="nama" name="nama" autofocus autocomplete="off" required>
@@ -51,7 +71,7 @@
           </div>
           <div class="mb-3">
             <label for="jurusan" class="col-form-label">Jurusan</label>
-            <select class="form-select" aria-label="Default select example" name="jurusan">
+            <select class="form-select" aria-label="Default select example" id="jurusan" name="jurusan">
               <option selected>Pilih Jurusan</option>
               <option value="Teknik Informatika">Teknik Informatika</option>
               <option value="Teknik Industri">Teknik Industri</option>
